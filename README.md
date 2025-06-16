@@ -1,10 +1,8 @@
-AFRO EQUALITY
+*AFRO EQUALITY*
 
+**Empowering People of African Descent: Hate Speech, Violence and Racism- Training on Digital Skills and Civic Participation**
 
-
-Empowering People of African Descent: Hate Speech, Violence and Racism- Training on Digital Skills and Civic Participation
-
-ITML conducted a comprehensive sentiment analysis of online press and social media content across Greece, Italy, and Spain. The initial phase involved scraping online press articles to extract their text and titles, complemented by acquiring tweets labeled for hate speech from the TweetEval dataset available on Hugging Face. For sentiment evaluation, we employed VADER (Valence Aware Dictionary and sEntiment Reasoner), a lexicon and rule-based tool that assigns a compound sentiment score alongside specific scores for positive and negative sentiments. To enhance our analysis, we integrated API calls to ChatGPT 4.0-mini, utilizing a meticulously crafted prompt refined through extensive experimentation. This approach enabled us to classify texts for the presence of racial hate speech targeting Black individuals and to assess whether the author's intent was racially motivated. Our goal was to construct a dataset encompassing columns for text, title, newspaper, sentiment, hate speech, hate speech explanation, author's motivation, and an explanation of the author's motivation. Leveraging large language models like ChatGPT facilitated the generation of detailed explanations for hate speech and the author's intent, thereby enriching the dataset with nuanced insights.
+Conducted a comprehensive sentiment analysis of online press and social media content across Greece, Italy, and Spain. The initial phase involved scraping online press articles to extract their text and titles, complemented by acquiring tweets labeled for hate speech from the TweetEval dataset available on Hugging Face. For __sentiment evaluation__, we employed __VADER (Valence Aware Dictionary and sEntiment Reasoner)__, a lexicon and rule-based tool that assigns a compound sentiment score alongside specific scores for positive and negative sentiments. To enhance our analysis, __we integrated API calls to ChatGPT 4.0-mini__, utilizing a meticulously crafted prompt refined through extensive experimentation. This approach enabled us to classify texts for the presence of racial hate speech targeting Black individuals and to assess whether the author's intent was racially motivated. Our goal was to construct a dataset encompassing columns for text, title, newspaper, sentiment, hate speech, hate speech explanation, author's motivation, and an explanation of the author's motivation. Leveraging large language models like ChatGPT facilitated the generation of detailed explanations for hate speech and the author's intent, thereby enriching the dataset with nuanced insights.
 
 
 Codes for scraping online articles:
@@ -30,11 +28,12 @@ For Tweets:
 Download and save the text of tweets labeled for hate speech from the TweetEval dataset. The TweetEval dataset is available on Hugging Face.	
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Sentiment Analysis code:
+
+**Sentiment Analysis code:**
 
 - Vader_Sentiment.py
 
-VADER (Valence Aware Dictionary and sEntiment Reasoner): uses a lexicon and rule-based approach to evaluate the sentiment of text data. 
+__VADER (Valence Aware Dictionary and sEntiment Reasoner)__: uses a lexicon and rule-based approach to evaluate the sentiment of text data. 
 It's particularly well-suited for analyzing social media, news articles, and other forms of online text.
 
 KEY FEATURES:
@@ -52,11 +51,10 @@ KEY FEATURES:
         Neutral Score: Measures the intensity of neutral sentiment.
         Compound Score: A normalized score between -1 (most negative) and +1 (most positive). It reflects the overall sentiment of the text.
 
-================================================================================================================================================================================================================================
-================================================================================================================================================================================================================================
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ChatGPT-4o Mini:
-We integrated API calls to ChatGPT 4.0-mini, utilizing a meticulously crafted prompt refined through extensive experimentation.
+We __integrated API calls to ChatGPT 4.0-mini__, utilizing a meticulously crafted prompt refined through extensive experimentation.
 
 
 Prompt for classifying online articles:
@@ -95,8 +93,8 @@ Prompt for classifying tweets:
         - If the tweet is neutral or unclear, classify it as "No" with a clear justification.
         - Avoid assumptions beyond what is explicitly stated in the tweet.
 
-================================================================================================================================================================================================================================
-================================================================================================================================================================================================================================
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 Final Outcome:
 
