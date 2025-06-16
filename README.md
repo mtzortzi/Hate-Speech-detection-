@@ -1,45 +1,106 @@
-**Edit a file, create a new file, and clone from Bitbucket in under 2 minutes**
+AFRO EQUALITY
 
-When you're done, you can delete the content in this README and update the file with details for others getting started with your repository.
 
-*We recommend that you open this README in another tab as you perform the tasks below. You can [watch our video](https://youtu.be/0ocf7u76WSo) for a full demo of all the steps in this tutorial. Open the video in a new tab to avoid leaving Bitbucket.*
 
----
+Empowering People of African Descent: Hate Speech, Violence and Racism- Training on Digital Skills and Civic Participation
 
-## Edit a file
+ITML conducted a comprehensive sentiment analysis of online press and social media content across Greece, Italy, and Spain. The initial phase involved scraping online press articles to extract their text and titles, complemented by acquiring tweets labeled for hate speech from the TweetEval dataset available on Hugging Face. For sentiment evaluation, we employed VADER (Valence Aware Dictionary and sEntiment Reasoner), a lexicon and rule-based tool that assigns a compound sentiment score alongside specific scores for positive and negative sentiments. To enhance our analysis, we integrated API calls to ChatGPT 4.0-mini, utilizing a meticulously crafted prompt refined through extensive experimentation. This approach enabled us to classify texts for the presence of racial hate speech targeting Black individuals and to assess whether the author's intent was racially motivated. Our goal was to construct a dataset encompassing columns for text, title, newspaper, sentiment, hate speech, hate speech explanation, author's motivation, and an explanation of the author's motivation. Leveraging large language models like ChatGPT facilitated the generation of detailed explanations for hate speech and the author's intent, thereby enriching the dataset with nuanced insights.
 
-You’ll start by editing this README file to learn how to edit a file in Bitbucket.
 
-1. Click **Source** on the left side.
-2. Click the README.md link from the list of files.
-3. Click the **Edit** button.
-4. Delete the following text: *Delete this line to make a change to the README from Bitbucket.*
-5. After making your change, click **Commit** and then **Commit** again in the dialog. The commit page will open and you’ll see the change you just made.
-6. Go back to the **Source** page.
+Codes for scraping online articles:
 
----
+For Greek articles (athinorama, proto_thema, Kathimerini):
+	- greek_web_scraping_athinorama.py
+	- greek_web_scraping_proto_thema.py
+	- greek_web_scraping_kathimerini.py
 
-## Create a file
 
-Next, you’ll add a new file to this repository.
+For Spanish articles (el diario, el pais):
+	- spanish_web_scraping_el_diario.py
+	- spanish_web_scraping_el_pais.py
 
-1. Click the **New file** button at the top of the **Source** page.
-2. Give the file a filename of **contributors.txt**.
-3. Enter your name in the empty file space.
-4. Click **Commit** and then **Commit** again in the dialog.
-5. Go back to the **Source** page.
+For Italian articles ():
+	-
 
-Before you move on, go ahead and explore the repository. You've already seen the **Source** page, but check out the **Commits**, **Branches**, and **Settings** pages.
 
----
+For Tweets:
 
-## Clone a repository
+- tweet_dataset_download_hate_speech.py
 
-Use these steps to clone from SourceTree, our client for using the repository command-line free. Cloning allows you to work on your files locally. If you don't yet have SourceTree, [download and install first](https://www.sourcetreeapp.com/). If you prefer to clone from the command line, see [Clone a repository](https://confluence.atlassian.com/x/4whODQ).
+Download and save the text of tweets labeled for hate speech from the TweetEval dataset. The TweetEval dataset is available on Hugging Face.	
 
-1. You’ll see the clone button under the **Source** heading. Click that button.
-2. Now click **Check out in SourceTree**. You may need to create a SourceTree account or log in.
-3. When you see the **Clone New** dialog in SourceTree, update the destination path and name if you’d like to and then click **Clone**.
-4. Open the directory you just created to see your repository’s files.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Sentiment Analysis code:
 
-Now that you're more familiar with your Bitbucket repository, go ahead and add a new file locally. You can [push your change back to Bitbucket with SourceTree](https://confluence.atlassian.com/x/iqyBMg), or you can [add, commit,](https://confluence.atlassian.com/x/8QhODQ) and [push from the command line](https://confluence.atlassian.com/x/NQ0zDQ).
+- Vader_Sentiment.py
+
+VADER (Valence Aware Dictionary and sEntiment Reasoner): uses a lexicon and rule-based approach to evaluate the sentiment of text data. 
+It's particularly well-suited for analyzing social media, news articles, and other forms of online text.
+
+KEY FEATURES:
+    Pre-Trained Sentiment Lexicon:
+    VADER relies on a lexicon (a dictionary) of words that have been scored for their sentiment intensity (Positive words like "great," "awesome," or "fantastic" have high positive scores).
+    Handles Sentiment Modifiers:
+    VADER accounts for intensifiers, negations, and other modifiers that influence sentiment (Intensifiers: Words like "very" or "extremely" increase sentiment intensity). 
+    Works Well for Short Text
+    Emoticons, Slang, and Punctuation
+    VADER recognizes emojis, internet slang, and punctuation to capture a better sentiment in informal text ("I love it!! 😊" will have a stronger positive sentiment due to the exclamation points and smiley face).
+    Scores for Sentiment Polarity:
+    VADER provides a compound sentiment score and scores for each sentiment category:
+        Positive Score: Measures the intensity of positive sentiment.
+        Negative Score: Measures the intensity of negative sentiment.
+        Neutral Score: Measures the intensity of neutral sentiment.
+        Compound Score: A normalized score between -1 (most negative) and +1 (most positive). It reflects the overall sentiment of the text.
+
+================================================================================================================================================================================================================================
+================================================================================================================================================================================================================================
+
+ChatGPT-4o Mini:
+We integrated API calls to ChatGPT 4.0-mini, utilizing a meticulously crafted prompt refined through extensive experimentation.
+
+
+Prompt for classifying online articles:
+
+ 	You are a political scientist with profound expertise in hate speech and discrimination. You are given the following newspaper article. Your task is to determine:
+
+        	1. Whether the article contains racial hate speech against People of African Descent.
+        	2. Whether the motivation of the author of the article is racist.
+
+        Please provide your answers in the following CSV format:
+        Yes or No, Explanation of the first answer without any punctuation, Yes or No, Explanation of the second answer without any punctuation
+
+        Ensure that your response strictly follows this format, using commas to separate each element, and omitting all punctuation marks in the explanations.
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Prompt for classifying tweets:
+
+        ## Goal:
+        You are a political scientist with expertise in hate speech and discrimination. Your task is to analyze the following tweet and determine:
+
+        1. Whether the tweet contains racial hate speech against People of African Descent (Black people).
+        2. Whether the author's motivation for writing the tweet is hateful or racist.
+
+        ## Return Format:
+        Your response must strictly follow this format:
+        Yes or No, Explanation of the first answer without any punctuation, Yes or No, Explanation of the second answer without any punctuation
+
+        - Separate each part with a comma.
+        - The explanations should not contain any punctuation (periods, commas, colons, etc.).
+        - Provide concise but clear reasoning.
+
+        ## Warnings:
+        - Do not include extra text outside of the required format.
+        - If the tweet is neutral or unclear, classify it as "No" with a clear justification.
+        - Avoid assumptions beyond what is explicitly stated in the tweet.
+
+================================================================================================================================================================================================================================
+================================================================================================================================================================================================================================
+
+Final Outcome:
+
+
+
+
+
