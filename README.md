@@ -1,4 +1,5 @@
-*AFRO EQUALITY*
+*Developed a pipeline for hate speech detection by scraping online content using BeautifulSoup, analyzing sentiment with VADER, and classifying text using OpenAI’s ChatGPT API.*
+
 
 **Empowering People of African Descent: Hate Speech, Violence and Racism- Training on Digital Skills and Civic Participation**
 
